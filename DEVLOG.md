@@ -5,6 +5,59 @@
 
 ---
 
+## 2026-06-07｜Phase 3-1 SplashScreen完了
+
+### 作業内容
+- Amplify初期化・Cognito匿名サインイン・Hive初期化を実装
+- iOS Podfile の最低バージョンを 12.0 → 13.0 に変更（amplify_auth_cognitoの要件）
+- amplifyconfiguration.dart のJSON内コメントを削除（FormatExceptionの原因）
+- signUp成功後に資格情報を保存するよう修正（失敗時の不正データ残留バグ修正）
+
+### 詰まった点と解決策
+- **iOS 12.0エラー**: Podfileの `platform :ios, '12.0'` のコメントを外して13.0に変更
+- **JSONパースエラー**: amplifyconfiguration.dartのJSON文字列内に `//` コメントが残っていた → 削除
+- **SignUp not permitted**: Cognitoのセルフサービスサインアップが無効 → AWSコンソールで有効化
+- **Lambda構文エラー**: Pre sign-upトリガーのPythonコードのインデントエラー → 修正・Deploy
+- **Incorrect username or password**: autoVerifyEmail:Trueが原因と判断 → Lambdaから削除・アプリ再インストール
+
+### 最終確認結果
+- エラーログなしで起動 ✅
+- SplashScreen → HomeScreen（BottomTab）自動遷移 ✅
+- BottomTabのナビゲーション動作 ✅
+
+---
+
+## 2026-06-07｜Cognito認証設計の整理（外部AI分析）
+
+### 現在の設定内容
+- セルフサービスのサインアップ：**有効**
+- 属性検証・アカウント確認メッセージ：**自動送信しない**
+- 必須属性：**なし**
+
+### 採用している認証方式：「サイレントサインアップ」
+AWSの正式な「匿名認証（Guest Access）」はIdentity Poolを指すが、今回はUser PoolのJWTをLambdaで検証する設計のため、アプリ側で裏側に自動サインアップ・サインインを行う方式を採用している。
+- 初回起動時: ランダムなユーザーID/パスワードを生成
+- `Amplify.Auth.signUp()` を裏側で実行
+- そのまま `Amplify.Auth.signIn()` を実行
+- 取得したJWTをLambdaのAuthorizationヘッダーに付与
+
+### MVPとしての評価
+- ✅ LambdaをJWT必須にすることでBot・直接攻撃を防げる
+- ✅ ユーザーは何もしなくてもクイズを即開始できる
+- ⚠️ セルフサインアップ有効のためBotによるユーザー大量生成リスクあり → Billingアラートで監視
+
+### 実装時の注意点（ハマりやすい点）
+`signUp`後にユーザーが `UNCONFIRMED`（未確認）状態になる場合、`signIn`が `UserNotConfirmedException` で失敗する。
+- **解決策A（推奨）**: Lambda Post Confirmationトリガーでサインアップ直後に自動CONFIRMED化
+- **解決策B**: Cognitoの「アカウント確認」設定で自動確認済みになるよう調整
+
+現時点でこのエラーが出た場合は、Cognito側の確認設定を見直す。
+
+### 設計方針の結論
+「ユーザープールを使ったサイレント認証」はPhase 3での正式アカウント移行（メール登録など）への拡張性が高く、Quiztのロードマップに合っている。このまま進めてよい。
+
+---
+
 ## 2026-06-07｜Phase 2-7〜2-8
 
 ### 作業内容

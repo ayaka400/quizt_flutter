@@ -6,13 +6,13 @@
 
 ## 🎯 現在地
 
-**Phase 3-1：SplashScreen 実装**
+**Phase 3-2：HomeScreen 実装**
 
 ---
 
 ## ⏭ 次のアクション
 
-`lib/screens/splash/splash_screen.dart` に Amplify 初期化・Cognito 匿名サインイン・Hive 初期化を実装する。
+`lib/screens/home/home_screen.dart` に statsProvider・StreakHeroCard・DailyProgressCard・問題を解くボタンを実装する。
 
 ---
 
@@ -49,11 +49,10 @@
 
 > 1画面 = UI表示 + ロジック + Hive保存 まで完成させてから次へ進む
 
-- [ ] 3-1 SplashScreen（Amplify初期化・Cognito匿名認証・Hive初期化）
-    - [ ] `flutter analyze lib/screens/splash_screen.dart` がエラーなし
-    - [ ] ⚠️ 起動→HomeScreen自動遷移するか目視確認
-    - [ ] ⚠️ Android Studioコンソールにエラーログが出ていないか確認
-    - [ ] ⚠️ `quizt_mockup.html` の画面0と見比べてUIがOKか
+- [x] 3-1 SplashScreen（Amplify初期化・Cognito匿名認証・Hive初期化）
+    - [x] `flutter analyze lib/screens/splash_screen.dart` がエラーなし
+    - [x] ⚠️ 起動→HomeScreen自動遷移するか目視確認
+    - [x] ⚠️ Android Studioコンソールにエラーログが出ていないか確認
 - [ ] 3-2 HomeScreen（statsProvider・StreakHeroCard・DailyProgressCard・問題を解くボタン）
     - [ ] `flutter analyze lib/screens/home_screen.dart` がエラーなし
     - [ ] ⚠️ StreakHeroCard・DailyProgressCard・統計カードが表示されるか目視確認
