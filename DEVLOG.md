@@ -5,6 +5,23 @@
 
 ---
 
+## 2026-06-07｜Phase 2-4〜2-5
+
+### 作業内容
+- `lib/models/favorite.dart` 作成（@HiveType typeId:0、9フィールド）
+- `lib/models/history_entry.dart` 作成（@HiveType typeId:1、7フィールド）
+- `flutter pub run build_runner build --delete-conflicting-outputs` 実行
+- `favorite.g.dart` / `history_entry.g.dart`（TypeAdapter）の自動生成を確認
+
+### 詰まった点
+- なし（7秒でビルド完了）
+
+### 決定事項
+- フィールド番号（@HiveField）は一度決めたら変更・削除禁止（既存データ破壊のリスク）
+- 追加は末尾に番号を増やす形でOK
+
+---
+
 ## 2026-06-07｜Phase 2-2〜2-3
 
 ### 作業内容

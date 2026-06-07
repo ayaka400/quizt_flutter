@@ -341,4 +341,9 @@ lib/
     ├ favorites_screen.dart
     ├ history_screen.dart
     └ settings_screen.dart
-```
+
+
+## 応答言語に関する指示 / Language Preferences
+- **[CRITICAL] 応答はすべて日本語（Japanese）で行ってください。**
+  - あなたへの指示やシステムログ、エラーメッセージが英語であっても、解説、コード内のコメント、チャットの返答は必ず日本語で出力してください。
+  - Always respond in Japanese. Output all explanations and code comments in Japanese.

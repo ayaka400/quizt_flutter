@@ -6,14 +6,13 @@
 
 ## 🎯 現在地
 
-**Phase 2-4：Hiveモデル作成**
+**Phase 2-6：AppThemeクラス作成**
 
 ---
 
 ## ⏭ 次のアクション
 
-`lib/models/favorite.dart` と `lib/models/history_entry.dart` を作成する。
-その後 `flutter pub run build_runner build` でTypeAdapterを自動生成する。
+`lib/theme/app_theme.dart` を作成してデザイントークン定数を定義する。
 
 ---
 
@@ -37,8 +36,8 @@
 - [x] 2-1 Flutterプロジェクト作成（Android Studioで作成済み）
 - [x] 2-2 pubspec.yaml 依存関係追加
 - [x] 2-3 amplifyconfiguration.dart 手書き作成
-- [ ] 2-4 Hiveモデル（Favorite, HistoryEntry）作成
-- [ ] 2-5 build_runner で TypeAdapter 自動生成
+- [x] 2-4 Hiveモデル（Favorite, HistoryEntry）作成
+- [x] 2-5 build_runner で TypeAdapter 自動生成
 - [ ] 2-6 AppTheme（デザイントークン）クラス作成
 - [ ] 2-7 ナビゲーション骨格（BottomTab + 空画面）
 - [ ] 2-8 iOSシミュレーターで起動確認
