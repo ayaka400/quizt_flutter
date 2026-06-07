@@ -6,13 +6,13 @@
 
 ## 🎯 現在地
 
-**Phase 2-6：AppThemeクラス作成**
+**Phase 3-1：SplashScreen 実装**
 
 ---
 
 ## ⏭ 次のアクション
 
-`lib/theme/app_theme.dart` を作成してデザイントークン定数を定義する。
+`lib/screens/splash/splash_screen.dart` に Amplify 初期化・Cognito 匿名サインイン・Hive 初期化を実装する。
 
 ---
 
@@ -38,22 +38,59 @@
 - [x] 2-3 amplifyconfiguration.dart 手書き作成
 - [x] 2-4 Hiveモデル（Favorite, HistoryEntry）作成
 - [x] 2-5 build_runner で TypeAdapter 自動生成
-- [ ] 2-6 AppTheme（デザイントークン）クラス作成
-- [ ] 2-7 ナビゲーション骨格（BottomTab + 空画面）
-- [ ] 2-8 iOSシミュレーターで起動確認
+- [x] 2-6 AppTheme（デザイントークン）クラス作成
+- [x] 2-7 ナビゲーション骨格（BottomTab + 空画面）
+    - [x] `flutter analyze lib/` がエラーなし
+- [x] 2-8 iOSシミュレーターで起動確認
+    - [x] ⚠️ シミュレーターで起動・4タブが表示されるか目視確認
+    - [x] ⚠️ タブ切り替えが動くか目視確認
 
 ### Phase 3｜画面単位で縦切り実装
 
 > 1画面 = UI表示 + ロジック + Hive保存 まで完成させてから次へ進む
 
 - [ ] 3-1 SplashScreen（Amplify初期化・Cognito匿名認証・Hive初期化）
+    - [ ] `flutter analyze lib/screens/splash_screen.dart` がエラーなし
+    - [ ] ⚠️ 起動→HomeScreen自動遷移するか目視確認
+    - [ ] ⚠️ Android Studioコンソールにエラーログが出ていないか確認
+    - [ ] ⚠️ `quizt_mockup.html` の画面0と見比べてUIがOKか
 - [ ] 3-2 HomeScreen（statsProvider・StreakHeroCard・DailyProgressCard・問題を解くボタン）
+    - [ ] `flutter analyze lib/screens/home_screen.dart` がエラーなし
+    - [ ] ⚠️ StreakHeroCard・DailyProgressCard・統計カードが表示されるか目視確認
+    - [ ] ⚠️ 「問題を解く」ボタンが表示されるか目視確認
+    - [ ] ⚠️ `quizt_mockup.html` の画面1と見比べてUIがOKか
 - [ ] 3-3 QuizScreen（API呼び出し・Cognito JWT付与・問題表示・選択肢状態管理）
+    - [ ] `flutter analyze lib/screens/quiz_screen.dart` がエラーなし
+    - [ ] ⚠️ Lambdaから問題が取得できるか確認（コンソールでAPIレスポンス確認）
+    - [ ] ⚠️ 選択肢タップで選択中状態になるか目視確認
+    - [ ] ⚠️ 「回答する」ボタンが動いてExplainScreenへ遷移するか確認
+    - [ ] ⚠️ `quizt_mockup.html` の画面2と見比べてUIがOKか
 - [ ] 3-4 ExplainScreen（正誤表示・Hive保存・GoalModal）
+    - [ ] `flutter analyze lib/screens/explain_screen.dart` がエラーなし
+    - [ ] ⚠️ 正解・不正解それぞれのResultBannerが表示されるか確認
+    - [ ] ⚠️ Hive保存確認（5問解いた後にHistoryScreenで履歴が出るか）
+    - [ ] ⚠️ daily_goal達成時にGoalModalが表示されるか確認
+    - [ ] ⚠️ `quizt_mockup.html` の画面3・4と見比べてUIがOKか
 - [ ] 3-5 CategoryScreen（カテゴリ一覧・カテゴリ別正答率・問題生成トリガー）
+    - [ ] `flutter analyze lib/screens/category_screen.dart` がエラーなし
+    - [ ] ⚠️ 7カテゴリが2列グリッドで表示されるか目視確認
+    - [ ] ⚠️ カテゴリタップ→QuizScreen遷移するか確認
+    - [ ] ⚠️ `quizt_mockup.html` の画面5と見比べてUIがOKか
 - [ ] 3-6 FavoritesScreen（favorites_box一覧・カテゴリフィルタ・BottomSheet全文表示）
+    - [ ] `flutter analyze lib/screens/favorites_screen.dart` がエラーなし
+    - [ ] ⚠️ お気に入り登録した問題が一覧表示されるか確認
+    - [ ] ⚠️ カードタップでBottomSheetが開くか確認
+    - [ ] ⚠️ `quizt_mockup.html` の画面6と見比べてUIがOKか
 - [ ] 3-7 HistoryScreen（history_box一覧・全体正答率・カテゴリ別バーチャート）
+    - [ ] `flutter analyze lib/screens/history_screen.dart` がエラーなし
+    - [ ] ⚠️ 回答履歴が一覧表示されるか確認
+    - [ ] ⚠️ カテゴリ別バーチャートが表示されるか確認
+    - [ ] ⚠️ `quizt_mockup.html` の画面7と見比べてUIがOKか
 - [ ] 3-8 SettingsScreen（通知設定・daily_goal・データリセット）
+    - [ ] `flutter analyze lib/screens/settings_screen.dart` がエラーなし
+    - [ ] ⚠️ トグル操作がHiveに保存されるか確認（再起動後も設定が残るか）
+    - [ ] ⚠️ データリセットで確認ダイアログが出るか確認
+    - [ ] ⚠️ `quizt_mockup.html` の画面8と見比べてUIがOKか
 
 ### Phase 4｜仕上げ・エッジケース
 
@@ -71,6 +108,7 @@
 - [ ] 5-5 App Store Connect設定（プライバシーラベル「データ収集なし」）
 - [ ] 5-6 TestFlight配布
 - [ ] 5-7 App Store審査申請
+
 
 ---
 

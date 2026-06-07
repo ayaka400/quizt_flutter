@@ -5,6 +5,38 @@
 
 ---
 
+## 2026-06-07｜Phase 2-7〜2-8
+
+### 作業内容
+- `lib/app.dart` 作成（BottomTab ナビゲーター・4タブ）
+- `lib/main.dart` 更新（ProviderScope + AppTheme 適用・SplashScreen を起点に設定）
+- 空画面6枚作成（splash / home / category / favorites / history / settings）
+- `flutter analyze lib/` → エラーなし確認
+- iOSシミュレーター（iPhone 17 Pro）で起動確認
+
+### 目視確認結果
+- スプラッシュ画面表示 ✅
+- 1.5秒後に BottomTab 画面へ遷移 ✅
+- 4タブ表示 ✅
+- タブ切り替え動作 ✅
+
+### 詰まった点
+- なし
+
+---
+
+## 2026-06-07｜Phase 2-6
+
+### 作業内容
+- `lib/theme/app_theme.dart` 作成
+- カラー12色・スペーシング2種・角丸4種をCLAUDE.mdのデザイントークン通りに定義
+- `ThemeData`（scaffoldBackgroundColor・AppBarTheme・ColorScheme）を設定
+
+### 詰まった点
+- なし
+
+---
+
 ## 2026-06-07｜Phase 2-4〜2-5
 
 ### 作業内容
