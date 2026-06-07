@@ -176,3 +176,18 @@ ID:2 毎日21:00 タイトル:「🌙 今日の夜のクイズ」 本文:「1日
 - [ ] Phase 3-8: SettingsScreen
 - [ ] Phase 4: 仕上げ・エッジケース
 - [ ] Phase 5: 申請準備
+
+## 除外ファイル
+- `lib/amplifyconfiguration.dart` は読み込み不要。
+  AWSリソースIDが含まれる設定ファイル。
+  Amplify初期化コードを書く際は
+  `Amplify.configure(amplifyconfig)` の形式で参照するだけでよい。
+
+## Claude Codeが読み込んではいけないファイル
+- `lib/amplifyconfiguration.dart`（AWSリソースID）
+  （Amplify初期化コードを書く際は`Amplify.configure(amplifyconfig)` の形式で参照するだけでよい。）
+- `.env`（環境変数・シークレット類）
+- `*.keystore`（Android署名鍵）
+- `ios/Runner/GoogleService-Info.plist`（Firebase使う場合）
+- `android/app/google-services.json`（同上）
+- `~/.aws/credentials`（AWSアクセスキー）

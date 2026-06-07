@@ -43,3 +43,21 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Amplify設定（AWSリソースID含む）
+lib/amplifyconfiguration.dart
+
+
+# シークレット類
+.env
+.env.*
+lib/amplifyconfiguration.dart   # お好みで
+
+
+# Android署名関連
+*.keystore
+*.jks
+android/key.properties
+
+# AWSクレデンシャル
+.aws/
